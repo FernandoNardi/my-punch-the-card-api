@@ -1,0 +1,33 @@
+{
+  "name": "my-punch-the-card-api",
+  "version": "1.0.0",
+  "description": "Api de controle de ponto",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "npm test",
+    "mocha": "_mocha"
+  },
+  "keywords": [
+    "point",
+    "control",
+    "my-point",
+    "api"
+  ],
+  "author": "nardi",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.6.0",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "mongodb": "^3.0.2",
+    "nconf": "^0.10.0",
+    "winston": "^2.4.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "eslint": "^4.17.0",
+    "eslint-config-google": "^0.9.1",
+    "mocha": "^5.0.1"
+  }
+}

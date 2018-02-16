@@ -1,0 +1,8 @@
+{
+  "PORT": "3000",
+
+  "DATABASE_CONNECTION_URL": "mongodb://localhost:27017",
+  "DATABASE_NAME": "card",
+  "DATABASE_NAME_TEST": "card-test"
+
+}
