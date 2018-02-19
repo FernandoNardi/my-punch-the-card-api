@@ -5,19 +5,18 @@ const winston = require('winston');
 
 const config = require(`${ROOT_PATH}/src/commons/config`);
 
-module.exports = (() => {
-
+const database = (() => {
   let client;
   const collections = [];
   let db;
-
+  
   const connect = (databaseName, callback) => {
     const connectionUrl = config.get('DATABASE_CONNECTION_URL');
-
+  
     if (client) {
       return process.nextTick(callback, null, client);
     }
-
+  
     mongoClient.connect(connectionUrl, (err, clientResult) => {
       if (err) {
         winston.error(`[MongoDB] Database failed to connect ${connectionUrl}. err: ${err}`);
@@ -29,7 +28,7 @@ module.exports = (() => {
       callback(err, db);
     });
   };
-
+  
   const close = (callback) => {
     winston.debug('[MongoDB] Database trying to disconnect');
     if (client) {
@@ -42,7 +41,7 @@ module.exports = (() => {
       });
     }
   };
-
+  
   const getCollection = (name) => {
     let collection = collections[name];
     if (!collection) {
@@ -51,10 +50,12 @@ module.exports = (() => {
     }
     return collection;
   };
-
+  
   return {
     connect,
     getCollection,
     close
   };
 })();
+
+module.exports = database;

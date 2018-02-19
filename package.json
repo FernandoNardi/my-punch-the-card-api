@@ -2,7 +2,7 @@
   "name": "my-punch-the-card-api",
   "version": "1.0.0",
   "description": "Api de controle de ponto",
-  "main": "index.js",
+  "main": "index.mjs",
   "scripts": {
     "start": "node index.js",
     "test": "npm test",
