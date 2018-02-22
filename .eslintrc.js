@@ -1,5 +1,4 @@
 module.exports = {
-	"plugins": ["mocha"],
 	"env": {
 		"es6": true,
 		"node": true,

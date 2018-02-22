@@ -6,12 +6,14 @@ const winston = require('winston');
 
 const config = require(`${ROOT_PATH}/src/commons/config`);
 const pkg = require(`${ROOT_PATH}/package`);
+const routes = require(`${ROOT_PATH}/src/commons/routes`);
 
 const app = express();
 let serverProcess;
 
 const server = (() => {
   const start = (callback) => {
+    routes(app);
     app.locals.title = pkg.name;
 
     app.use(bodyParser.json({
