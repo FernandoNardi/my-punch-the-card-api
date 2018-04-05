@@ -6,7 +6,7 @@ const hoursRepository = (() => {
   const collection = () => getCollection('hours');
 
   const insertOne = (hours) => collection().insertOne(hours);
-  
+
   return {
     insertOne
   };

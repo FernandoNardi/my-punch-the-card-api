@@ -1,8 +1,7 @@
 const controller = require('./hours-controller');
 
 const hoursRoutes = (app) => {
-  app.route('/hours')
-    .post(controller.create);
+  app.post('/hours', controller.create);
 
 };
 
