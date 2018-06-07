@@ -3,9 +3,12 @@
 
   "DATABASE_CONNECTION_URL": "mongodb://mypuch:ljkhy_23s@ds016068.mlab.com:16068/card",
   "DATABASE_CONNECTION_URL_": "mongodb://localhost:27017",
+  
   "DATABASE_NAME": "card",
-  "DATABASE_NAME_TEST": "card-test"
+  "DATABASE_NAME_TEST": "card-test",
 
+
+  "FIREBASE_DATABASEURL": "https://my-punch-the-card.firebaseio.com"
 }
 
 

@@ -1,10 +1,9 @@
-const { create } = require('./hours-create');
+// const { create } = require('./hours-create');
 
 const hoursController = (() => {
   
   
   const create = (req, res) => {
-    console.log(req.body);
     
     // await create(req.body);
     res.status(201).send({ test: 'test' });
