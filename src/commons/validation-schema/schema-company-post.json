@@ -1,0 +1,64 @@
+{
+  "id": "company-post",
+  "post": {
+    "type": "object",
+    "required": ["name", "daysOfWeek"],
+    "properties": {
+      "name": {
+        "type": "string",
+        "minLength": 1,
+        "title": "Name of your company",
+        "examples": ["Google", "Motorola"]
+      },
+      "phone": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "title": "Phone alias of your company",
+              "examples": ["celphone", "office one"]
+            },
+            "number": {
+              "type": "string",
+              "title": "Phone of your company",
+              "examples": ["3185859696", "9185239874"]
+            }
+          }
+        }
+      },
+      "daysOfWeek": {
+        "type": "array",
+        "items": {
+          "enum": ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "$ref": "#/post"
+    },
+    {
+      "anyOf": [
+        {
+          "required": ["dailyHours"],
+          "properties": {
+            "dailyHours": {
+              "type": "integer"
+            }
+          }
+        },
+        {
+          "required": ["weeklyHours"],
+          "properties": {
+            "weeklyHours": {
+              "type": "integer"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
