@@ -4,7 +4,7 @@ const { assert } = require('chai');
 
 const validating = require(`${ROOT_PATH}/src/commons/validation-schema`);
 
-describe.only('UNIT TEST - src/commons/validation-schema/index.js', () => {
+describe('UNIT TEST - src/commons/validation-schema/index.js', () => {
   describe('#company-post', () => {
     it('Success validation "company", object with "dailyHours".', () => {
       const company = {
