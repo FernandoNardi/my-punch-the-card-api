@@ -7,11 +7,13 @@ const router = new express.Router();
 
 const pkg = require(`${ROOT_PATH}/package`);
 const hours = require(`${ROOT_PATH}/src/hours/`);
+const companies = require(`${ROOT_PATH}/src/companies/`);
 
 module.exports = () => {
   const app = express();
 
   hours.routes(router);
+  companies.routes(router);
 
   app.locals.title = pkg.name;
 

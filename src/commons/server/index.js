@@ -9,7 +9,7 @@ const pkg = require(`${ROOT_PATH}/package`);
 
 const server = {
   serverProcess: null,
-  start: () => {
+  start() {
     const port = process.env.PORT || config.get('PORT');
     const app = express();
 
@@ -21,7 +21,7 @@ const server = {
       winston.info('[APP] initialized SUCCESSFULLY');
     });  
   },
-  close: callback => {
+  close(callback) {
     if (this.serverProcess) {
       this.serverProcess.close(callback);
     }

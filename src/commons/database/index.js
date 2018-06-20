@@ -7,21 +7,20 @@ const winston = require('winston');
 const config = require(`${ROOT_PATH}/src/commons/config`);
 
 const database = {
-  connect: async databaseName => {
+  collections: [],
+  async connect() {
     if (!this.client) {
       const connectionUrl = config.get('DATABASE_CONNECTION_URL');
       try {
-        this.client = await mongoClient.connect(connectionUrl);
+        this.db = await mongoClient.connect(connectionUrl);
+        winston.info('[MongoDB] Database connected.');
       } catch (err) {
         winston.error(`[MongoDB] Database failed to connect ${connectionUrl}. err: ${err}`);
         throw err;
       }
-
-      winston.info('[MongoDB] Database connected.');
-      this.db = this.client.db(databaseName);
     }
   },
-  close: async () => {
+  async close() {
     winston.debug('[MongoDB] Database trying to disconnect');
     if (this.client) {
       try {
@@ -33,7 +32,7 @@ const database = {
       }
     }
   },
-  getCollection: name => {
+  getCollection(name) {
     let collection = field.get(this, 'collections.name');
     if (!collection) {
       collection = this.db.collection(name);
