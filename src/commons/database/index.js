@@ -7,6 +7,7 @@ const winston = require('winston');
 const config = require(`${ROOT_PATH}/src/commons/config`);
 
 const database = {
+  db: null,
   collections: [],
   async connect() {
     if (!this.client) {

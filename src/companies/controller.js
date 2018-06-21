@@ -1,13 +1,21 @@
 const ROOT_PATH = process.cwd();
 
-const create = require('./create');
+const Company = require('./company');
 const status = require(`${ROOT_PATH}/src/commons/status-code`);
 
 module.exports = {
   async create(req, res) {
+    const { body } = req;
     try {
-      await create(req.body);
-      res.status(status.created).send();
+      const company = await new Company()
+        .setName(body.name)
+        .setDailyHours(body.dailyHours)
+        .setDaysOfWeek(body.daysOfWeek)
+        .setPhone(body.phone)
+        .setWeeklyHours(body.weeklyHours)
+        .save();
+
+      res.status(status.created).send(company);
     } catch (err) {
       res.status(status.badRequest).send();
     }
