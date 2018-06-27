@@ -40,10 +40,10 @@ class Company {
 
   async save() {
     try {
-      const companySave = Object.assign(this);
-      const result = await repository.save(companySave);
+      const companyToSave = Object.assign(this);
+      const result = await repository.save(companyToSave);
       if (result.insertedCount) {
-        return companySave;
+        return companyToSave;
       }
       throw new Error('Company not inserted.');
     } catch (err) {
