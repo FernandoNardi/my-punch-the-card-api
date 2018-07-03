@@ -1,6 +1,6 @@
 const ROOT_PATH = process.cwd();
 
-const { assert } = require('chai');
+const { expect } = require('chai');
 const sinon = require('sinon');
 
 const Company = require(`${ROOT_PATH}/src/companies/company`);
@@ -44,7 +44,7 @@ describe('UNIT TEST - src/companies/company.js', () => {
       };
 
       sandbox.stub(repository, 'save').callsFake(async companyToSave => {
-        assert.deepEqual(companyToSave, companyInserted);
+        expect(companyToSave).to.deep.equal(companyInserted);
         return await {
           insertedCount: 1
         };
@@ -58,10 +58,9 @@ describe('UNIT TEST - src/companies/company.js', () => {
         .setWeeklyHours(body.weeklyHours)
         .save();
 
-      assert.deepEqual(company, companyInserted);
+      expect(company).to.deep.equal(companyInserted);
     });
 
-    // corrigir test
     it('Not save company in database.', async () => {
       const companyInserted = {
         daysOfWeek: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'],
@@ -77,22 +76,23 @@ describe('UNIT TEST - src/companies/company.js', () => {
       };
 
       sandbox.stub(repository, 'save').callsFake(async companyToSave => {
-        assert.deepEqual(companyToSave, companyInserted);
+        expect(companyToSave).to.deep.equal(companyInserted);
         return await {
-          insertedCount: 1
+          insertedCount: 0
         };
       });
       
       try {
-        return await new Company()
+        await new Company()
           .setName(body.name)
           .setDailyHours(body.dailyHours)
           .setDaysOfWeek(body.daysOfWeek)
           .setPhone(body.phone)
           .setWeeklyHours(body.weeklyHours)
           .save();
+        expect(true).to.be.false;
       } catch (err) {
-        assert.strictEqual(err.message, 'Company not inserted.');
+        expect(err.message).to.equal('Company not inserted.');
       }
     });
   });
