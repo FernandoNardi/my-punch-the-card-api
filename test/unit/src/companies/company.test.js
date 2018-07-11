@@ -46,7 +46,8 @@ describe('UNIT TEST - src/companies/company.js', () => {
       sandbox.stub(repository, 'save').callsFake(async companyToSave => {
         expect(companyToSave).to.deep.equal(companyInserted);
         return await {
-          insertedCount: 1
+          insertedCount: 1,
+          insertedId: 'test'
         };
       });
 
@@ -58,7 +59,7 @@ describe('UNIT TEST - src/companies/company.js', () => {
         .setWeeklyHours(body.weeklyHours)
         .save();
 
-      expect(company).to.deep.equal(companyInserted);
+      expect(company).to.deep.equal({ _id: 'test', ...companyInserted });
     });
 
     it('Not save company in database.', async () => {

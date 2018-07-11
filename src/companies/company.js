@@ -3,16 +3,19 @@ const repository = require('./repository');
 class Company {
   constructor() {
     this.name;
-    this.dailyHours;
-    this.weeklyHours;  
     this.daysOfWeek = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
-    this.phone;
+    this.dailyHours = 8;
+    this.weeklyHours = 40;  
+    this.phone = [];
     this.created = new Date();
     this.active = true;
+    this.user;
   }
 
   setDailyHours(dailyHours) {
-    this.dailyHours = dailyHours;
+    if (dailyHours) {
+      this.dailyHours = dailyHours;
+    }
     return this;
   }
 
@@ -34,21 +37,27 @@ class Company {
   }
 
   setWeeklyHours(weeklyHours) {
-    this.weeklyHours = weeklyHours;
+    if (weeklyHours) {
+      this.weeklyHours = weeklyHours;
+    }
     return this;
   }
 
+  setUser(uid) {
+    this.user = { uid };
+    return this;
+  }
+  
   async save() {
-    try {
-      const companyToSave = Object.assign(this);
-      const result = await repository.save(companyToSave);
-      if (result.insertedCount) {
-        return companyToSave;
-      }
-      throw new Error('Company not inserted.');
-    } catch (err) {
-      throw err;
+    const companyToSave = Object.assign(this);
+    const result = await repository.save(companyToSave);
+    if (result.insertedCount) {
+      return {
+        _id: result.insertedId,
+        ...companyToSave
+      };
     }
+    throw new Error('Company not inserted.');
   }
 }
 

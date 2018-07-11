@@ -80,29 +80,8 @@ describe('UNIT TEST - src/commons/validation-schema/index.js', () => {
       assert.isFalse(isValid.valid);
     });
 
-    it('Error validation "company", object without "weeklyHours" and "dailyHours"', () => {
-      const company = {
-        name: 'Company test',
-        daysOfWeek: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday']
-      };
-
-      const isValid = validating(company).toSchema('company-post');
-      assert.isFalse(isValid.valid);
-    });
-
-    it('Error validation "company", object without "daysOfWeek"', () => {
-      const company = {
-        weeklyHours: 40,
-        name: 'Company test'
-      };
-
-      const isValid = validating(company).toSchema('company-post');
-      assert.isFalse(isValid.valid);
-    });
-
     it('Error validation "company", object with "daysOfWeek" where the array has some value not allowed', () => {
       const company = {
-        weeklyHours: 40,
         name: 'Company test',
         daysOfWeek: ['monday', 'tuesday', 'wednesday', 'thursday', 'test']
       };

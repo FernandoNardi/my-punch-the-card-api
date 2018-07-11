@@ -16,3 +16,8 @@ node_modules/
 
 .vscode
 my-punch-the-card-firebase.json
+
+examples.json
+dev-slack-app-credentials.json
+slack-app-credentials.json
+examples.json

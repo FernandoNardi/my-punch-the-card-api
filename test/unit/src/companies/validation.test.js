@@ -41,7 +41,6 @@ describe('UNIT TEST - src/companies/validation.js', () => {
       };
       const req = {
         body: {
-          name: 'Company test',
           phone: [],
           daysOfWeek: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday']
         }
@@ -59,5 +58,7 @@ describe('UNIT TEST - src/companies/validation.js', () => {
 
       validation(req, res);
     });
+
+    // to-do (more tests)
   });
 });

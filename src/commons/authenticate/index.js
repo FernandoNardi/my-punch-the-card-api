@@ -6,6 +6,7 @@ module.exports = async (req, res, next) => {
     req.user = await firebase.verify(headers.authorization);
     next();
   } catch (err) {
+    // TO-DO - check expired token
     res.status(401).send(err);
   }
 };

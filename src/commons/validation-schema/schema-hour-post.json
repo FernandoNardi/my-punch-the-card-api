@@ -1,0 +1,17 @@
+
+{
+  "id": "hour-post",
+  "type": "object",
+  "required": ["point", "timezone", "company"],
+  "properties": {
+    "point": {
+      "type": "string"
+    },
+    "timezone": {
+      "type": "string"
+    },
+    "company": {
+      "type": "string"
+    }
+  }
+}
